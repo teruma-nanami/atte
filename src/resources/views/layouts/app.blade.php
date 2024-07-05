@@ -20,8 +20,8 @@
       </h1>
       <div class="header__nav">
         <ul>
-          <li><a href="/">ホーム</a></li>
-          <li><a href="/">日付一覧</a></li>
+          <li><a href="{{ asset('/') }}">ホーム</a></li>
+          <li><a href="{{ asset('attendance') }}">日付一覧</a></li>
           <li><a href="/">ログアウト</a></li>
         </ul>
       </div>

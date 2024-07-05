@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
-
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,12 @@ use App\Http\Controllers\AttendanceController;
 
 Route::get('/', [AttendanceController::class, 'index']);
 Route::post('/attendance', [AttendanceController::class, 'store']);
+Route::get('/attendance', [AttendanceController::class, 'attendance']);
+
+Route::middleware('auth')->group(function () {
+  // Route::get('/register', [RegisteredUserController::class, 'create']);
+  // Route::post('/register', [RegisteredUserController::class, 'store']);
+  // Route::get('/login', [AuthenticatedSessionController::class, 'store']);
+  // Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+  // Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+});

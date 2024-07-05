@@ -12,12 +12,14 @@
   .container{
     max-width: 360px;
     margin: 0 auto;
-    text-align: center;
+    p {
+      text-align: center;
+    }
   }
   .form {
     &__inner{
       &-text{
-        margin: 30px 0;
+        margin: 30px 0 10px;
       }
       input {
         width: 100%;
@@ -27,12 +29,17 @@
         padding: 10px 10px;
       }
     }
+    &__error {
+      font-size: 14px;
+      color: #f66;
+    }
     button {
       width: 100%;
       color: #fff;
       background-color: #00f;
       border: none;
       border-radius: 5px;
+      margin: 30px 0 0;
       padding: 10px 0;
       cursor: pointer;
       transition: .2s;
