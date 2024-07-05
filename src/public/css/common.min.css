@@ -1,0 +1,2 @@
+body{display:grid;grid-template-rows:70px minmax(770px, 1fr) 60px}.header{grid-row:1}.header__inner{display:flex;justify-content:space-between;align-items:center;padding:8px 20px}.header__inner a{text-decoration:none;color:#000}.header__inner a:hover{color:#f60}.header__inner h1{margin:0;font-weight:400}.header__nav ul{display:flex;list-style:none}.header__nav li{display:inline-block;margin-left:20px}main{grid-row:2}.footer{grid-row:3;text-align:center;padding:20px 0}
+/*# sourceMappingURL=common.min.css.map */

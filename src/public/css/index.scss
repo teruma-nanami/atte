@@ -1,0 +1,34 @@
+@media (min-width:768px) {
+  main {
+    background-color: #eee;
+    height: 760px;
+  }
+  h2 {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 400;
+    padding: 40px 0;
+  }
+  .grid {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+    &__inner {
+      appearance: none;
+      padding: 70px 0;
+      background-color: #fff;
+      border: none;
+    }
+    button {
+      font-size: 26px;
+      cursor: pointer;
+    }
+    .no-click {
+      color: #eee;
+      pointer-events: none;
+    }
+  }
+}

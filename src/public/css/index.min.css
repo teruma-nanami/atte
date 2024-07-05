@@ -1,0 +1,2 @@
+@media(min-width: 768px){main{background-color:#eee;height:7600px}h2{margin:0 auto;text-align:center;font-weight:400;padding:40px 0}.grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:30px}.grid__inner{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding:70px 0;background-color:#fff;border:none}.grid button{font-size:26px;cursor:pointer}.grid .no-click{color:#eee;pointer-events:none}}
+/*# sourceMappingURL=index.min.css.map */
