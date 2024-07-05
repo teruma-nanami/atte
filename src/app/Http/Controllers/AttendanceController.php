@@ -12,6 +12,11 @@ class AttendanceController extends Controller
 
     public function store(Request $request) {
 
-        return view('index')
+        return view('index');
+    }
+
+    public function attendance() {
+
+        return view('attendance');
     }
 }

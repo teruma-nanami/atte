@@ -12,10 +12,9 @@
   .container {
     max-width: 360px;
     margin: 0 auto;
-    text-align: center;
   }
   .form__inner-text {
-    margin: 30px 0;
+    margin: 30px 0 10px;
   }
   .form__inner input {
     width: 100%;
@@ -23,6 +22,11 @@
     border: 1px solid #666;
     border-radius: 5px;
     padding: 10px 10px;
+  }
+  .form__error {
+    font-size: 14px;
+    color: #f66;
+    text-align: left;
   }
   .form button {
     width: 100%;

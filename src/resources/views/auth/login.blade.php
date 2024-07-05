@@ -23,20 +23,31 @@
   <main>
     <div class="container">
       <h2>ログイン</h2>
-      <form action="" method="post" class="form">
+      <form action="/login" method="post" class="form">
+        @csrf
         <div class="form__inner">
           <div class="form__inner-text">
             <input type="text" name="email" placeholder="メールアドレス">
           </div>
+          <div class="form__error">
+            @error('email')
+            {{ $message }}
+            @enderror
+          </div>
           <div class="form__inner-text">
             <input type="password" name="password" placeholder="パスワード">
+          </div>
+          <div class="form__error">
+            @error('password')
+            {{ $message }}
+            @enderror
           </div>
         </div>
         <button type="submit">ログイン</button>
       </form>
       <p>
         アカウントをお持ちでない方はこちらから<br>
-        <a href="{{ asset('auth.register') }}">会員登録</a>
+        <a href="{{ asset('register') }}">会員登録</a>
       </p>
     </div>
   </main>
