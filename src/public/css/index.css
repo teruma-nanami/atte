@@ -3,6 +3,22 @@
     background-color: #eee;
     height: 760px;
   }
+  .nation .success {
+    color: green;
+    background-color: #ccffcc;
+    margin: 0;
+    padding: 15px 0;
+    font-size: 18px;
+    text-align: center;
+  }
+  .nation .error {
+    color: #f00;
+    background-color: #ffcccc;
+    margin: 0;
+    padding: 15px 0;
+    font-size: 18px;
+    text-align: center;
+  }
   h2 {
     margin: 0 auto;
     text-align: center;

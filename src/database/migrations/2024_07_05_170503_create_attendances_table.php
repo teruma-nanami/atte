@@ -18,7 +18,7 @@ class CreateAttendancesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('date');
             $table->dateTime('check_in');
-            $table->dateTime('check_out');
+            $table->dateTime('check_out')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
