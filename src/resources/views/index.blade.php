@@ -16,7 +16,7 @@
     <p class="error">{{ session('error') }}</p>
     @endif
   </div>
-  <h2>福場林太郎さんお疲れ様です！</h2>
+  <h2>{{ Auth::user()->name }}さんお疲れ様です！</h2>
 
 
 

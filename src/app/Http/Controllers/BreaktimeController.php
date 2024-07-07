@@ -20,6 +20,9 @@ class BreaktimeController extends Controller
                                 ->first();
 
         if ($attendance) {
+            if ($attendance->check_out) {
+                return redirect()->back()->with('error', '勤務終了後に休憩に入ることはできません。');
+            }
             Breaktime::create([
                 'attendance_id' => $attendance->id,
                 'break_start' => now(),
@@ -51,6 +54,7 @@ class BreaktimeController extends Controller
 
                 return redirect()->back()->with('success', '休憩が終わりました(仮)');
             }
+            return redirect()->back()->with('error', '休憩に入っていません');
         }
 
         return redirect()->back()->with('error', '本日は出勤していません。');

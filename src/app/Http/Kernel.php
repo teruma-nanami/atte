@@ -64,4 +64,13 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
+    // スケジュールタスクの設定
+    // protected function schedule(Schedule $schedule)
+    // {
+    // // 毎日深夜0時に自動退勤・出勤を実行
+    // $schedule->call(function () {
+    //     app(AttendanceController::class)->autoCheckoutAndCheckin();
+    // })->dailyAt('00:00');
+    // }
 }
