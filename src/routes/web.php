@@ -25,15 +25,17 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [AttendanceController::class, 'index']);
-  Route::post('/checkin', [AttendanceController::class, 'checkin']);
-  Route::post('/checkout', [AttendanceController::class, 'checkout']);
-  Route::post('/breakstart', [BreaktimeController::class, 'breakstart']);
-  Route::post('/breakend', [BreaktimeController::class, 'breakend']);
+  Route::post('/checkin', [AttendanceController::class, 'checkIn']);
+  Route::post('/checkout', [AttendanceController::class, 'checkOut']);
+  Route::post('/breakstart', [BreaktimeController::class, 'breakStart']);
+  Route::post('/breakend', [BreaktimeController::class, 'breakEnd']);
   Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendance');
   Route::post('/logout', function () {
     Auth::logout();
     return redirect('/');
 })->name('logout');
+  Route::get('/users', [AttendanceController::class, 'userIndex'])->name('users');
+  Route::get('/users/{user}', [AttendanceController::class, 'userShow'])->name('show');
   // Route::get('/register', [RegisteredUserController::class, 'create']);
   // Route::post('/register', [RegisteredUserController::class, 'store']);
   // Route::get('/login', [AuthenticatedSessionController::class, 'store']);

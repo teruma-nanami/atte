@@ -1,8 +1,4 @@
 @media (min-width:768px) {
-  main {
-    background-color: #eee;
-    height: 760px;
-  }
   .nation {
     .success {
       color: green;
@@ -35,14 +31,20 @@
     grid-template-rows: 1fr 1fr;
     gap: 30px;
     &__inner {
-      appearance: none;
-      padding: 70px 0;
-      background-color: #fff;
-      border: none;
+      height: 170px;
     }
     button {
+      border: none;
+      appearance: none;
       font-size: 26px;
       cursor: pointer;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      transition: .2s;
+    }
+    button:hover {
+      background-color: #ddd;
     }
     .no-click {
       color: #eee;

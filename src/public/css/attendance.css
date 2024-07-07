@@ -1,13 +1,28 @@
 @media (min-width: 768px) {
-  main {
-    background-color: #eee;
-    height: 760px;
-  }
   h2 {
     margin: 0 auto;
     text-align: center;
     font-weight: 400;
     padding: 40px 0;
+  }
+  h2 a {
+    background-color: #fff;
+    border: 1px solid #00f;
+    color: #00f;
+    box-sizing: border-box;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: 0.2s;
+  }
+  h2 a:hover {
+    border: 1px solid #f60;
+    color: #f60;
+  }
+  h2 span {
+    display: inline-block;
+    margin: 0 20px;
   }
   table {
     margin: 0 auto;

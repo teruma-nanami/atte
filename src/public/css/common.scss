@@ -1,6 +1,16 @@
+html {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   display: grid;
-  grid-template-rows: 70px minmax(770px, 1fr) 60px;
+  grid-template-rows: 70px minmax(540px, 1fr) 60px;
+  height: 100%;
+  align-content: space-between;
+}
+a {
+  text-decoration: none;
 }
 .header {
   grid-row: 1;
@@ -32,6 +42,7 @@ body {
 }
 main {
   grid-row: 2;
+  background-color: #eee;
 }
 .footer {
   grid-row: 3;

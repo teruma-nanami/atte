@@ -6,9 +6,9 @@
 
 @section('content')
 <h2>
-  <a href="{{ route('attendance', ['date' => \Carbon\Carbon::parse($date)->subDay()->toDateString()]) }}">＜</a>
+  <a href="{{ route('attendance', ['date' => \Carbon\Carbon::parse($date)->subDay()->toDateString()]) }}"><</a>
   <span>{{ $date }}</span>
-  <a href="{{ route('attendance', ['date' => \Carbon\Carbon::parse($date)->addDay()->toDateString()]) }}">＞</a>
+  <a href="{{ route('attendance', ['date' => \Carbon\Carbon::parse($date)->addDay()->toDateString()]) }}">></a>
 </h2>
 <table>
   <tbody>
@@ -28,9 +28,9 @@
         <td>{{ $attendance['total_work_duration'] }}</td>
     </tr>
 @endforeach
-  </tbody>
-</table>
-<div class="page__nav">
+    </tbody>
+  </table>
+  <div class="page__nav">
     {{ $users->appends(['date' => $date])->links() }}
   </div>
 @endsection

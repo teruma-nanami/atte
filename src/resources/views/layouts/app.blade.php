@@ -22,6 +22,7 @@
         <ul>
           <li><a href="{{ asset('/') }}">ホーム</a></li>
           <li><a href="{{ asset('attendance') }}">日付一覧</a></li>
+          <li><a href="{{ asset('users') }}">ユーザー一覧</a></li>
           <li>
               <form action="/logout" method="POST">
                 @csrf
