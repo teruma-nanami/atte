@@ -56,5 +56,11 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
+
+        // Fortify::redirects([
+        //     'login' => '/', // ログイン後のリダイレクト先
+        //     'register' => '/', // 登録後のリダイレクト先
+        //     'email-verification' => '/', // メール認証後のリダイレクト先
+        // ]);
     }
 }

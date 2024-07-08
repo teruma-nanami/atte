@@ -19,8 +19,8 @@
       <td><a href="{{ route('show', $user->id) }}">{{ $user->name }}</a></td>
       <td>{{ $user->email }}</td>
     </tr>
+    @endforeach
   </table>
-  @endforeach
   <div class="page__nav">
     {{ $users->links() }}
   </div>

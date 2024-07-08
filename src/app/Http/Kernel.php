@@ -3,6 +3,9 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Console\Scheduling\Schedule;
+// Scheduleクラスをuseするためにインポート
+use App\Http\Controllers\AttendanceController;
 
 class Kernel extends HttpKernel
 {
@@ -66,11 +69,11 @@ class Kernel extends HttpKernel
     ];
 
     // スケジュールタスクの設定
-    // protected function schedule(Schedule $schedule)
-    // {
-    // // 毎日深夜0時に自動退勤・出勤を実行
-    // $schedule->call(function () {
-    //     app(AttendanceController::class)->autoCheckoutAndCheckin();
-    // })->dailyAt('00:00');
-    // }
+    protected function schedule(Schedule $schedule)
+    {
+    // 毎日深夜0時に自動退勤・出勤を実行
+    $schedule->call(function () {
+        app(AttendanceController::class)->autoCheckoutAndCheckin();
+    })->dailyAt('00:00');
+    }
 }

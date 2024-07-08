@@ -5,8 +5,8 @@ use Laravel\Fortify\Fortify;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\BreaktimeController;
 use Illuminate\Support\Facades\Auth;
-// use App\Http\Controllers\RegisteredUserController;
-// use App\Http\Controllers\AuthenticatedSessionController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +19,20 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-// Fortify::verifyEmailView(function () {
-//   return view('auth.verify-email');
-// });
+Fortify::verifyEmailView(function () {
+  return view('auth.verify-email');
+});
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+  $request->fulfill();
+  return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::middleware(['auth'])->group(function () {
+Route::post('/email/resend', function (Request $request) {
+  $request->user()->sendEmailVerificationNotification();
+  return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/', [AttendanceController::class, 'index']);
   Route::post('/checkin', [AttendanceController::class, 'checkIn']);
   Route::post('/checkout', [AttendanceController::class, 'checkOut']);
@@ -32,10 +41,14 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendance');
   Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/');
+    return redirect('/login');
 })->name('logout');
   Route::get('/users', [AttendanceController::class, 'userIndex'])->name('users');
   Route::get('/users/{user}', [AttendanceController::class, 'userShow'])->name('show');
+
+  // 自動退勤・出勤のルート（スケジュールタスクで実行）
+  Route::get('/auto-checkout-checkin', [AttendanceController::class, 'autoCheckoutAndCheckin'])->name('auto.checkout.checkin');
+
   // Route::get('/register', [RegisteredUserController::class, 'create']);
   // Route::post('/register', [RegisteredUserController::class, 'store']);
   // Route::get('/login', [AuthenticatedSessionController::class, 'store']);
