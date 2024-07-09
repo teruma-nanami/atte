@@ -1,38 +1,50 @@
+h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 400;
+  padding: 40px 0;
+}
+h2 a {
+  background-color: #fff;
+  border: 1px solid #00f;
+  color: #00f;
+  box-sizing: border-box;
+  padding: 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 2px;
+  transition: 0.2s;
+}
+h2 a:hover {
+  border: 1px solid #f60;
+  color: #f60;
+}
+h2 span {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+table {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+tr {
+  border-top: 1px solid #000;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px 4px;
+  font-size: 14px;
+  border: 1px solid #000;
+}
+
 @media (min-width: 768px) {
-  h2 {
-    margin: 0 auto;
-    text-align: center;
-    font-weight: 400;
-    padding: 40px 0;
-  }
-  h2 a {
-    background-color: #fff;
-    border: 1px solid #00f;
-    color: #00f;
-    box-sizing: border-box;
-    padding: 0 10px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 2px;
-    transition: 0.2s;
-  }
-  h2 a:hover {
-    border: 1px solid #f60;
-    color: #f60;
-  }
-  h2 span {
-    display: inline-block;
-    margin: 0 20px;
-  }
-  table {
-    margin: 0 auto;
-    width: 1080px;
-  }
-  tr {
-    border-top: 1px solid #000;
-  }
   th, td {
     text-align: left;
-    padding: 20px 20px;
+    padding: 20px 35px;
+    font-size: 18px;
+    border: none;
   }
 }/*# sourceMappingURL=attendance.css.map */

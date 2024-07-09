@@ -23,21 +23,22 @@
 <div class="grid">
   <form class="grid__inner" method="POST" action="/checkin">
     @csrf
-    <button class="" type="submit" value="work-in">勤務開始</button>
+    <button id="start" type="submit" value="work-in">勤務開始</button>
   </form>
   <form class="grid__inner" method="POST" action="/checkout">
     @csrf
-    <button class="" type="submit" value="work-out">勤務終了</button>
+    <button id="end" type="submit" value="work-out" disabled>勤務終了</button>
   </form>
   <form class="grid__inner" method="POST" action="/breakstart">
     @csrf
-    <button class="" type="submit" value="break-in">休憩開始</button>
+    <button id="breakStart" type="submit" value="break-in">休憩開始</button>
   </form>
   <form class="grid__inner" method="POST" action="/breakend">
     @csrf
-    <button class="" type="submit" value="break-out">休憩終了</button>
+    <button id="breakEnd" type="submit" value="break-out" disabled>休憩終了</button>
   </form>
 </div>
 
 </main>
+<script src="{{ asset('js/toggle.js') }}"></script>
 @endsection

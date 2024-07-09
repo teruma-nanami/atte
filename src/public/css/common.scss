@@ -2,7 +2,6 @@ html {
   height: 100%;
   margin: 0;
 }
-
 body {
   display: grid;
   grid-template-rows: 70px minmax(540px, 1fr) 60px;
@@ -12,32 +11,58 @@ body {
 a {
   text-decoration: none;
 }
+.sp-only {
+	overflow: hidden;
+	display: none;
+}
 .header {
   grid-row: 1;
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 20px;
     a {
       text-decoration: none;
       color: #000;
+      font-size: 36px;
+      transition: .2s;
     }
     a:hover {
       color: #f60;
     }
     h1 {
       margin: 0;
+      padding: 8px 20px;
       font-weight: 400;
     }
   }
-  &__nav ul {
-    display: flex;
-    list-style: none;
+  &__sp {
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #fff; // 色は自由に設定して
+    width: 70px;
+    height: 70px;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      margin: auto;
+      width: 32px; // メニュー棒の横幅を指定
+      height: 4px; // メニュー棒の縦幅を指定
+      background: #000;
+    }
+    &::before {
+      transform: translateY(-7px); // 中心から7px上に移動させる // 棒の縦幅に応じて調整
+      box-shadow: 0 9px #000; // 3本線のハンバーガーメニューの場合は必要 // 9pxは要調整
+    }
+    &::after {
+      transform: translateY(7px); // 中心から7px下に移動させる // 棒の縦幅に応じて調整
+    }
   }
-  &__nav li {
-    display: inline-block;
-    margin-left: 20px;
+  &__nav {
+    display: none;
   }
 }
 main {
@@ -48,4 +73,46 @@ main {
   grid-row: 3;
   text-align: center;
   padding: 20px 0;
+}
+@media (min-width: 768px) {
+  .header {
+    h1 {
+      padding: 0;
+    }
+    &__inner {
+      padding: 8px 20px;
+    }
+    &__sp {
+      display: none;
+    }
+    &__nav {
+      display: block;
+    }
+    &__nav ul {
+      display: flex;
+      list-style: none;
+    }
+    &__nav li {
+      display: inline-block;
+      margin-left: 20px;
+    }
+    &__nav a {
+      font-size: 19px;
+    }
+    &__nav button {
+      border: 1px solid #00f;
+      color: #00f;
+      background-color: #fff;
+      font-size: 15px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      transition: .2s;
+    }
+    &__nav button:hover {
+      color: #f60;
+      border: 1px solid #f60;
+    }
+    
+  }
+
 }

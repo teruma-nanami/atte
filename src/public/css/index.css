@@ -1,3 +1,53 @@
+.nation .success {
+  color: green;
+  background-color: #ccffcc;
+  margin: 0;
+  padding: 15px 0;
+  font-size: 18px;
+  text-align: center;
+}
+.nation .error {
+  color: #f00;
+  background-color: #ffcccc;
+  margin: 0;
+  padding: 15px 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+h2 {
+  font-weight: 400;
+  padding: 40px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  gap: 30px;
+}
+.grid__inner {
+  margin: 0 30px;
+  height: 80px;
+}
+
+button {
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-size: 26px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
 @media (min-width: 768px) {
   .nation .success {
     color: green;
@@ -30,25 +80,10 @@
     gap: 30px;
   }
   .grid__inner {
+    margin: 0;
     height: 170px;
   }
   .grid button {
-    border: none;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    font-size: 26px;
-    cursor: pointer;
     width: 100%;
-    height: 100%;
-    background-color: #fff;
-    transition: 0.2s;
-  }
-  .grid button:hover {
-    background-color: #ddd;
-  }
-  .grid .no-click {
-    color: #eee;
-    pointer-events: none;
   }
 }/*# sourceMappingURL=index.css.map */

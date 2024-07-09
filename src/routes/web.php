@@ -7,6 +7,8 @@ use App\Http\Controllers\BreaktimeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
+use Laravel\Fortify\Http\Controllers\NewPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,14 @@ Route::post('/email/resend', function (Request $request) {
   return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+
+  // 自動退勤・出勤のルート（スケジュールタスクで実行）
+  Route::get('/auto-checkout-checkin', [AttendanceController::class, 'autoCheckoutAndCheckin'])->name('auto.checkout.checkin');
+
 Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/', [AttendanceController::class, 'index']);
   Route::post('/checkin', [AttendanceController::class, 'checkIn']);
@@ -46,8 +56,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/users', [AttendanceController::class, 'userIndex'])->name('users');
   Route::get('/users/{user}', [AttendanceController::class, 'userShow'])->name('show');
 
-  // 自動退勤・出勤のルート（スケジュールタスクで実行）
-  Route::get('/auto-checkout-checkin', [AttendanceController::class, 'autoCheckoutAndCheckin'])->name('auto.checkout.checkin');
+
 
   // Route::get('/register', [RegisteredUserController::class, 'create']);
   // Route::post('/register', [RegisteredUserController::class, 'store']);
