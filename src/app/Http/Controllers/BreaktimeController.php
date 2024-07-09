@@ -10,7 +10,7 @@ use Carbon\Carbon;
 
 class BreaktimeController extends Controller
 {
-    public function breakstart() {
+    public function breakStart() {
 
         $today = Carbon::today()->toDateString();
 
@@ -33,7 +33,7 @@ class BreaktimeController extends Controller
         return redirect()->back()->with('error', '本日は出勤していません。');
     }
 
-    public function breakend() {
+    public function breakEnd() {
 
         $today = Carbon::today()->toDateString();
 

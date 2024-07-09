@@ -1,58 +1,43 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
-  <title>Atte</title>
-</head>
-<body>
-  <header class="header">
-    <div class="header__inner">
-      <h1>
-        <a href="/" class="header__logo">Atte</a>
-      </h1>
-    </div>
-  </header>
-  <main>
-    <div class="container">
-      <h2>ログイン</h2>
-      <form action="/login" method="post" class="form">
-        @csrf
-        <div class="form__inner">
-          <div class="form__inner-text">
-            <input type="text" name="email" placeholder="メールアドレス">
-          </div>
-          <div class="form__error">
-            @error('email')
-            {{ $message }}
-            @enderror
-          </div>
-          <div class="form__inner-text">
-            <input type="password" name="password" placeholder="パスワード">
-          </div>
-          <div class="form__error">
-            @error('password')
-            {{ $message }}
-            @enderror
-          </div>
+@extends('layouts.application')
+
+@section('content')
+  <div class="container">
+    <h2>ログイン</h2>
+    <form action="/login" method="post" class="form">
+      @csrf
+      <div class="form__inner">
+        <div class="form__inner-text">
+          <input type="text" name="email" placeholder="メールアドレス">
         </div>
-        <button type="submit">ログイン</button>
-      </form>
-      <p>
-        アカウントをお持ちでない方はこちらから<br>
-        <a href="{{ asset('register') }}">会員登録</a>
-      </p>
+        <div class="form__error">
+          @error('email')
+          {{ $message }}
+          @enderror
+        </div>
+        <div class="form__inner-text">
+          <input type="password" name="password" placeholder="パスワード">
+        </div>
+        <div class="form__error">
+          @error('password')
+          {{ $message }}
+          @enderror
+        </div>
+      </div>
+      <div>
+        <label for="remember_me">
+            <input id="remember_me" type="checkbox" name="remember">
+            <span>ログイン状態を保存する</span>
+        </label>
     </div>
-  </main>
-  <footer class="footer">
-    <div class="footer__inner">Atte, inc.</div>
-  </footer>
-</body>
-</html>
+      <button type="submit">ログイン</button>
+    </form>
+    <p>
+      パスワードをお忘れのかたは<a href="{{ asset('forgot-password') }}">こちら</a>から<br>
+      <a href="{{ asset('forgot-password') }}">パスワード再設定</a>
+    </p>
+    <p>
+      アカウントをお持ちでない方は<a href="{{ asset('register') }}">こちら</a>から<br>
+      <a href="{{ asset('register') }}">会員登録</a>
+    </p>
+  </div>
+@endsection

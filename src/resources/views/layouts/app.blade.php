@@ -18,10 +18,14 @@
       <h1>
         <a href="/" class="header__logo">Atte</a>
       </h1>
+      <button class="header__sp">
+        <span class="sp-only">Menu</span>
+      </button>
       <div class="header__nav">
         <ul>
           <li><a href="{{ asset('/') }}">ホーム</a></li>
           <li><a href="{{ asset('attendance') }}">日付一覧</a></li>
+          <li><a href="{{ asset('users') }}">ユーザー一覧</a></li>
           <li>
               <form action="/logout" method="POST">
                 @csrf

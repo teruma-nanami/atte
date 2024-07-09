@@ -5,8 +5,10 @@ use Laravel\Fortify\Fortify;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\BreaktimeController;
 use Illuminate\Support\Facades\Auth;
-// use App\Http\Controllers\RegisteredUserController;
-// use App\Http\Controllers\AuthenticatedSessionController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
+use Laravel\Fortify\Http\Controllers\NewPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,21 +21,43 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-// Fortify::verifyEmailView(function () {
-//   return view('auth.verify-email');
-// });
+Fortify::verifyEmailView(function () {
+  return view('auth.verify-email');
+});
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+  $request->fulfill();
+  return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::middleware(['auth'])->group(function () {
+Route::post('/email/resend', function (Request $request) {
+  $request->user()->sendEmailVerificationNotification();
+  return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+
+  // 自動退勤・出勤のルート（スケジュールタスクで実行）
+  Route::get('/auto-checkout-checkin', [AttendanceController::class, 'autoCheckoutAndCheckin'])->name('auto.checkout.checkin');
+
+Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/', [AttendanceController::class, 'index']);
-  Route::post('/checkin', [AttendanceController::class, 'checkin']);
-  Route::post('/checkout', [AttendanceController::class, 'checkout']);
-  Route::post('/breakstart', [BreaktimeController::class, 'breakstart']);
-  Route::post('/breakend', [BreaktimeController::class, 'breakend']);
+  Route::post('/checkin', [AttendanceController::class, 'checkIn']);
+  Route::post('/checkout', [AttendanceController::class, 'checkOut']);
+  Route::post('/breakstart', [BreaktimeController::class, 'breakStart']);
+  Route::post('/breakend', [BreaktimeController::class, 'breakEnd']);
   Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendance');
   Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/');
+    return redirect('/login');
 })->name('logout');
+  Route::get('/users', [AttendanceController::class, 'userIndex'])->name('users');
+  Route::get('/users/{user}', [AttendanceController::class, 'userShow'])->name('show');
+
+
+
   // Route::get('/register', [RegisteredUserController::class, 'create']);
   // Route::post('/register', [RegisteredUserController::class, 'store']);
   // Route::get('/login', [AuthenticatedSessionController::class, 'store']);

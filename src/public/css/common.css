@@ -1,6 +1,22 @@
+html {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   display: grid;
-  grid-template-rows: 70px minmax(770px, 1fr) 60px;
+  grid-template-rows: 70px minmax(540px, 1fr) 60px;
+  height: 100%;
+  align-content: space-between;
+}
+
+a {
+  text-decoration: none;
+}
+
+.sp-only {
+  overflow: hidden;
+  display: none;
 }
 
 .header {
@@ -10,34 +26,95 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 20px;
 }
 .header__inner a {
   text-decoration: none;
   color: #000;
+  font-size: 36px;
+  transition: 0.2s;
 }
 .header__inner a:hover {
   color: #f60;
 }
 .header__inner h1 {
   margin: 0;
+  padding: 8px 20px;
   font-weight: 400;
 }
-.header__nav ul {
-  display: flex;
-  list-style: none;
+.header__sp {
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #fff;
+  width: 70px;
+  height: 70px;
 }
-.header__nav li {
-  display: inline-block;
-  margin-left: 20px;
+.header__sp::before, .header__sp::after {
+  content: "";
+  display: block;
+  margin: auto;
+  width: 32px;
+  height: 4px;
+  background: #000;
+}
+.header__sp::before {
+  transform: translateY(-7px);
+  box-shadow: 0 9px #000;
+}
+.header__sp::after {
+  transform: translateY(7px);
+}
+.header__nav {
+  display: none;
 }
 
 main {
   grid-row: 2;
+  background-color: #eee;
 }
 
 .footer {
   grid-row: 3;
   text-align: center;
   padding: 20px 0;
+}
+
+@media (min-width: 768px) {
+  .header h1 {
+    padding: 0;
+  }
+  .header__inner {
+    padding: 8px 20px;
+  }
+  .header__sp {
+    display: none;
+  }
+  .header__nav {
+    display: block;
+  }
+  .header__nav ul {
+    display: flex;
+    list-style: none;
+  }
+  .header__nav li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  .header__nav a {
+    font-size: 19px;
+  }
+  .header__nav button {
+    border: 1px solid #00f;
+    color: #00f;
+    background-color: #fff;
+    font-size: 15px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: 0.2s;
+  }
+  .header__nav button:hover {
+    color: #f60;
+    border: 1px solid #f60;
+  }
 }/*# sourceMappingURL=common.css.map */
