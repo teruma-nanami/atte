@@ -5,7 +5,7 @@ namespace App\Http;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Console\Scheduling\Schedule;
 // Scheduleクラスをuseするためにインポート
-use App\Http\Controllers\AttendanceController;
+use App\Models\User;
 
 class Kernel extends HttpKernel
 {
@@ -71,9 +71,15 @@ class Kernel extends HttpKernel
     // スケジュールタスクの設定
     protected function schedule(Schedule $schedule)
     {
-    // 毎日深夜0時に自動退勤・出勤を実行
+    // 毎日23:59:59に自動退勤処理を実行
     $schedule->call(function () {
-        app(AttendanceController::class)->autoCheckoutAndCheckin();
-    })->dailyAt('00:00');
+        // ここに自動退勤処理のロジックを書く
+        // 例: 未退勤のユーザーを検索して、退勤時間を設定する
+        $users = User::whereNull('check_out')->get(); // 未退勤のユーザーを取得
+        foreach ($users as $user) {
+            $user->check_out = now()->endOfDay(); // その日の最後の時刻を設定
+            $user->save();
+        }
+    })->dailyAt('23:59:59');
     }
 }

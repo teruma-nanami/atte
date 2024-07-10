@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   height: 100%;
   margin: 0;
@@ -66,7 +67,40 @@ a {
   transform: translateY(7px);
 }
 .header__nav {
-  display: none;
+  position: fixed;
+  top: 0;
+  right: -250px; /* 初期位置を画面外に設定 */
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.header__nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.header__nav ul li {
+  margin: 20px 0;
+}
+.header__nav.open {
+  right: 0; /* メニューが表示される位置 */
+}
+.header__close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
 }
 
 main {
@@ -80,6 +114,55 @@ main {
   padding: 20px 0;
 }
 
+.page__nav {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.flex-1,
+div > p.leading-5 {
+  display: none;
+}
+
+svg.w-5.h-5 {
+  /*paginateメソッドの矢印の大きさ調整のために追加*/
+  width: 14px;
+  height: 14px;
+}
+
+.z-0 {
+  padding: 8px 0;
+  overflow: hidden;
+}
+.z-0 > a {
+  padding: 4px 8px;
+  color: #2384cf;
+  background-color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  border-left: 2px solid #eee;
+}
+.z-0 > span .px-2 {
+  padding: 5px 0px 3px 10px;
+  color: #2384cf;
+  background-color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+}
+.z-0 > span .px-4 {
+  padding: 4px 12px;
+  margin-left: 6px;
+  margin-right: -4px;
+  color: #fff;
+  background-color: #2384cf;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  border: none;
+}
+
 @media (min-width: 768px) {
   .header h1 {
     padding: 0;
@@ -90,16 +173,27 @@ main {
   .header__sp {
     display: none;
   }
+  .header__close {
+    display: none;
+  }
   .header__nav {
-    display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
   }
   .header__nav ul {
     display: flex;
+    flex-direction: row;
     list-style: none;
   }
-  .header__nav li {
+  .header__nav ul li {
+    margin: 0 10px;
     display: inline-block;
-    margin-left: 20px;
   }
   .header__nav a {
     font-size: 19px;
@@ -117,4 +211,5 @@ main {
     color: #f60;
     border: 1px solid #f60;
   }
-}/*# sourceMappingURL=common.css.map */
+}
+/*# sourceMappingURL=common.css.map */
