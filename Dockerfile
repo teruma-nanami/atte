@@ -3,7 +3,7 @@ FROM php:7.4-fpm
 
 # 必要なパッケージのインストール
 RUN apt-get update && apt-get install -y \
-    apt-get update && apt-get install -y nginx\
+    apt-get update && apt-get install -y nginx \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
@@ -36,5 +36,5 @@ ENV DB_USERNAME=laravel_user
 ENV DB_PASSWORD=laravel_pass
 
 # サービスの起動
-CMD ["php-fpm"]
+CMD service php7.4-fpm start && nginx -g 'daemon off;'
 # CMD ["nginx", "-g", "daemon off;"]
