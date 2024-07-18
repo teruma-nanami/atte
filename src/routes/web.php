@@ -42,6 +42,11 @@ Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('p
   // 自動退勤・出勤のルート（スケジュールタスクで実行）
   Route::get('/auto-checkout-checkin', [AttendanceController::class, 'autoCheckoutAndCheckin'])->name('auto.checkout.checkin');
 
+// ヘルスチェックエンドポイントの設定
+Route::get('/healthz', function () {
+  return response()->json(['status' => 'ok'], 200);
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/', [AttendanceController::class, 'index']);
   Route::post('/checkin', [AttendanceController::class, 'checkIn']);
@@ -55,8 +60,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 })->name('logout');
   Route::get('/users', [AttendanceController::class, 'userIndex'])->name('users');
   Route::get('/users/{user}', [AttendanceController::class, 'userShow'])->name('show');
-
-
 
   // Route::get('/register', [RegisteredUserController::class, 'create']);
   // Route::post('/register', [RegisteredUserController::class, 'store']);
