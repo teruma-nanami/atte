@@ -22,7 +22,7 @@ COPY src /var/www/html
 WORKDIR /var/www/html
 
 # ポートの公開
-EXPOSE 80
+EXPOSE 9000
 
 # 環境変数の設定
 ENV DB_CONNECTION=mysql
