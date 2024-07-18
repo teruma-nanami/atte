@@ -12,6 +12,9 @@ RUN apt-get update && apt-get install -y \
 # php.iniファイルをコピー
 COPY docker/php/php.ini /usr/local/etc/php/
 
+# Nginxの設定ファイルをコピー
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+
 # アプリケーションコードをコピー
 COPY src /var/www/html
 
@@ -30,4 +33,4 @@ ENV DB_USERNAME=laravel_user
 ENV DB_PASSWORD=laravel_pass
 
 # サービスの起動
-CMD ["php-fpm"]
+CMD ["nginx", "-g", "daemon off;"]
