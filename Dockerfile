@@ -12,7 +12,7 @@ COPY docker/php/php.ini /usr/local/etc/php/
 
 # Nginxの設定ファイルをコピー
 # COPY docker/nginx/default.conf /etc/nginx/nginx.conf
-COPY docker/nginx/default.conf /etc/nginx/sites-available/default
+COPY docker/nginx/nginx.conf /etc/nginx/sites-available/default
 
 
 # アプリケーションコードをコピー
