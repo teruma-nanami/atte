@@ -3,7 +3,7 @@ FROM php:7.4-fpm
 
 # 必要なパッケージのインストール
 RUN apt-get update && apt-get install -y \
-    apt-get update && apt-get install -y nginx \
+    nginx \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
