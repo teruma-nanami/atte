@@ -3,7 +3,7 @@ FROM php:7.4-fpm
 
 # 必要なパッケージのインストール
 RUN apt-get update
-RUN apt-get install -y nginx libpng-dev libjpeg-dev libfreetype6-dev
+RUN apt-get install -y nginx libpng-dev libjpeg-dev libfreetype6-dev supervisor
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
@@ -11,8 +11,8 @@ RUN docker-php-ext-install gd
 COPY docker/php/php.ini /usr/local/etc/php/
 
 # Nginxの設定ファイルをコピー
-# COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY docker/nginx/nginx.conf /etc/nginx/sites-available/default
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+# COPY docker/nginx/nginx.conf /etc/nginx/sites-available/default
 
 
 # アプリケーションコードをコピー
