@@ -10,10 +10,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd
 
 # php.iniファイルをコピー
-COPY ./docker/php/php.ini /usr/local/etc/php/
+COPY docker/php/php.ini /usr/local/etc/php/
 
 # アプリケーションコードをコピー
-COPY ./src /var/www/html
+COPY src /var/www/html
 
 # 作業ディレクトリの設定
 WORKDIR /var/www/html
