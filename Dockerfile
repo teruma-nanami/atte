@@ -41,3 +41,5 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # supervisordを使用してサービスを起動
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+
