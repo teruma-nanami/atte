@@ -3,6 +3,7 @@ FROM php:7.4-fpm
 
 # 必要なパッケージのインストール
 RUN apt-get update && apt-get install -y \
+    apt-get update && apt-get install -y nginx\
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
@@ -14,6 +15,8 @@ COPY docker/php/php.ini /usr/local/etc/php/
 
 # Nginxの設定ファイルをコピー
 # COPY docker/nginx/default.conf /etc/nginx/nginx.conf
+COPY docker/nginx/default.conf /etc/nginx/sites-available/default
+
 
 # アプリケーションコードをコピー
 COPY src /var/www/html
