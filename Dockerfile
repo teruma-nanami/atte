@@ -2,13 +2,10 @@
 FROM php:7.4-fpm
 
 # 必要なパッケージのインストール
-RUN apt-get update && apt-get install -y php7.4-fpm \
-    nginx \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+RUN apt-get update
+RUN apt-get install -y nginx libpng-dev libjpeg-dev libfreetype6-dev
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install gd
 
 # php.iniファイルをコピー
 COPY docker/php/php.ini /usr/local/etc/php/
@@ -36,5 +33,5 @@ ENV DB_USERNAME=laravel_user
 ENV DB_PASSWORD=laravel_pass
 
 # サービスの起動
-CMD service php7.4-fpm start && nginx -g 'daemon off;'
+CMD php-fpm && nginx -g 'daemon off;'
 # CMD ["nginx", "-g", "daemon off;"]
