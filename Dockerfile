@@ -26,7 +26,7 @@ EXPOSE 80
 
 # 環境変数の設定
 ENV DB_CONNECTION=mysql
-ENV DB_HOST=mysql
+ENV DB_HOST=mysql-db:3306
 ENV DB_PORT=3306
 ENV DB_DATABASE=laravel_db
 ENV DB_USERNAME=laravel_user

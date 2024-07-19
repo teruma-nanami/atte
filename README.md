@@ -33,7 +33,7 @@
 
 ### Dockerビルド
 
-1. git clone git@github.com:teruma-nanami/ability-test
+1. git clone git@github.com:teruma-nanami/atte
 1. docker-compose up -d --build
 
 ### Laravel環境構築
