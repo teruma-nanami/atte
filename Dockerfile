@@ -3,7 +3,7 @@ FROM php:7.4-fpm
 
 # 必要なパッケージのインストール
 RUN apt-get update
-RUN apt-get install -y nginx libpng-dev libjpeg-dev libfreetype6-dev supervisor
+RUN apt-get install -y nginx libpng-dev libjpeg-dev libfreetype6-dev
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
@@ -33,13 +33,13 @@ ENV DB_USERNAME=laravel_user
 ENV DB_PASSWORD=laravel_pass
 
 # サービスの起動
-# CMD php-fpm && nginx -g 'daemon off;'
+CMD php-fpm && nginx -g 'daemon off;'
 # CMD ["nginx", "-g", "daemon off;"]
 
 # supervisordの設定ファイルをコピー
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # supervisordを使用してサービスを起動
-CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 
