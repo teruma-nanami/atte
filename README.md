@@ -6,6 +6,7 @@
 
 ## アプリケーションURL
 http://runcha.xsrv.jp/
+fakerにて作成したパスワードはすべて「password」に統一されています
 
 ## 機能一覧
 - ログイン機能
