@@ -1,14 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Fortify;
-use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\BreaktimeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
+use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 use Laravel\Fortify\Http\Controllers\NewPasswordController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\BreaktimeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,13 +41,13 @@ Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
-  // 自動退勤・出勤のルート（スケジュールタスクで実行）
-  Route::get('/auto-checkout-checkin', [AttendanceController::class, 'autoCheckoutAndCheckin'])->name('auto.checkout.checkin');
+//   // 自動退勤・出勤のルート（スケジュールタスクで実行）
+//   Route::get('/auto-checkout-checkin', [AttendanceController::class, 'autoCheckoutAndCheckin'])->name('auto.checkout.checkin');
 
-// ヘルスチェックエンドポイントの設定
-Route::get('/healthz', function () {
-  return response()->json(['status' => 'ok'], 200);
-});
+// // ヘルスチェックエンドポイントの設定
+// Route::get('/healthz', function () {
+//   return response()->json(['status' => 'ok'], 200);
+// });
 
 Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/', [AttendanceController::class, 'index']);

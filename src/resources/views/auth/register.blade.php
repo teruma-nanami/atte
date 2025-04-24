@@ -32,7 +32,8 @@
         @error('password')
         {{ $message }}
         @enderror
-      </div>        </div>
+      </div>
+    </div>
     <button type="submit">会員登録</button>
   </form>
   <p>
